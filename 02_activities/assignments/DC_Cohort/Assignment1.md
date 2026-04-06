@@ -209,5 +209,9 @@ Consider, for example, concepts of fariness, inequality, social structures, marg
 
 
 ```
-Your thoughts...
+Reading about Pakistan's family registration database made me think about all the times I've stared at a form, cursor blinking in a required field, realizing my reality doesn't fit any of the options. Databases aren't just storing our information—they're deciding what counts as real in the first place.
+I see this every time I visit a new doctor. The intake form gives me two gender boxes and asks if I'm single, married, divorced, or widowed. What if you're none of those? What if your family doesn't look like what the database expects? You're forced to pick the "closest" option, which means the system never really sees you. And if the system doesn't see you, how can it properly care for you?
+When I opened a bank account with my partner, the system automatically made one of us the "primary" holder based on whose name was entered first. It seemed like a small technical detail until we realized it affected everything from credit reporting to who could make certain decisions. The database assumed someone had to be in charge—there was no option for equals.
+My LinkedIn profile bothers me too. It wants a neat timeline of jobs with increasingly impressive titles, but my actual career included taking time off to care for family and lateral moves for better work-life balance. The database treats these as gaps or failures rather than legitimate choices, making me invisible to recruiters whose searches assume everyone climbs straight up.
+These aren't just inconveniences. When databases can't handle your reality, you get excluded from healthcare, banking, jobs, and education. The really frustrating part is how these systems present themselves as objective and neutral, when really they're making choices about whose lives are worth accommodating. Every dropdown menu is someone deciding whose existence matters enough to include.
 ```
