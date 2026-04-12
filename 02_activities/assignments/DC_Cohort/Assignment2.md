@@ -56,7 +56,10 @@ The store wants to keep customer addresses. Propose two architectures for the CU
 **HINT:** search type 1 vs type 2 slowly changing dimensions. 
 
 ```
-Your answer...
+There are two ways to architect a CUSTOMER_ADDRESS table depending on whether the store needs to retain historical address data or not.
+The first approach is a Type 1 Slowly Changing Dimension, which overwrites the existing record whenever a customer's address changes. The table simply holds one row per customer with the usual address columns, and when an update comes in, that row is replaced. This is simple and keeps the table small, but the old address is gone forever — there is no way to recover what it was before the change.
+The second approach is a Type 2 Slowly Changing Dimension, which preserves history by inserting a new row every time an address changes rather than overwriting the old one. Each row carries a valid_from date, a valid_to date (left null while the record is still active), and an is_current flag. When a customer moves, the existing row gets a valid_to date stamped on it and is_current set to false, and a fresh row is inserted representing the new address. This means the table grows over time, but you can query it at any point in the past and know exactly what address was on file at that moment.
+For a bookstore, Type 2 is generally the better choice. If a customer disputes a delivery or you need to audit where an order was shipped, you can look up the address that was active on the date of that order — something Type 1 makes impossible once the customer has since moved.
 ```
 
 ***
@@ -191,5 +194,13 @@ Consider, for example, concepts of labour, bias, LLM proliferation, moderating c
 
 
 ```
-Your thoughts...
+Boykis's article challenges a comfortable assumption that runs through most public conversation about artificial intelligence — that these systems are somehow automatic, neutral, or self-generated. The title cuts straight to the point: neural nets are just people all the way down. Behind every model is a chain of human decisions, human data, and human labour, and the ethical problems that come with AI are largely problems about how that human foundation is treated and obscured.
+
+The most concrete issue the article surfaces is labour. Building a machine learning model requires vast quantities of labeled data — images identified, sentences classified, content flagged as safe or harmful. That work is done by large, distributed workforces of low-wage contractors, often in the Global South, paid per task with no benefits, no stability, and no recognition in the final product. The companies that deploy these models present them as technological achievements while the human assembly line underneath stays invisible. That invisibility is not incidental — it is part of how the industry sustains itself.
+
+Content moderation sits at an especially troubling intersection of labour and harm. Workers who review and categorize violent, abusive, or explicit content are exposed to a relentless stream of disturbing material, frequently without meaningful psychological support. The clean, safe-feeling experience at the user end exists because someone else processed the worst of what humans produce online, quietly and cheaply. That is an ethical cost that rarely appears in conversations about AI progress.
+
+Bias is another direct consequence of this human foundation. Data reflects the world as it has been, not as it should be, and the people who collect and label it bring their own cultural assumptions with them. A model trained on that data and then deployed globally will encode those assumptions as though they were objective facts. When AI systems influence decisions in hiring, lending, criminal justice, or healthcare, biased outputs stop being an abstract concern and start producing concrete harm for people who have no visibility into why a decision was made.
+
+What makes Boykis's framing valuable is that it closes off a common escape route. When something goes wrong with an AI system, the tendency is to treat it as a technical problem — a parameter to adjust, a dataset to clean. But if the system is people all the way down, then the failures are human failures: of accountability, of fair compensation, of whose knowledge and perspective gets treated as the default. Fixing them requires more than better engineering.
 ```
